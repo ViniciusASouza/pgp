@@ -1,0 +1,270 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PGP Public Key</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            padding: 40px 20px;
+            background: #0b0f14;
+            color: #e6edf3;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .container {
+            width: min(100%, 900px);
+            margin: 0 auto;
+        }
+
+        .card {
+            padding: 40px;
+            border: 1px solid #30363d;
+            border-radius: 18px;
+            background: #11161d;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .lock {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 30px;
+        }
+
+        .subtitle {
+            margin-top: 10px;
+            color: #8b949e;
+            font-size: 15px;
+        }
+
+        h2 {
+            margin-top: 35px;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+
+        .fingerprint {
+            padding: 18px;
+            border-radius: 10px;
+            background: #0b0f14;
+            border: 1px solid #30363d;
+            font-family: monospace;
+            font-size: 15px;
+            line-height: 1.8;
+            text-align: center;
+            word-break: break-all;
+            color: #c9d1d9;
+        }
+
+        .buttons {
+            text-align: center;
+            margin: 25px 0;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 13px 22px;
+            margin: 5px;
+            border-radius: 8px;
+            background: #238636;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .button:hover {
+            background: #2ea043;
+        }
+
+        .button.secondary {
+            background: #30363d;
+        }
+
+        .button.secondary:hover {
+            background: #484f58;
+        }
+
+        .pgp-key {
+            width: 100%;
+            max-height: 600px;
+            overflow: auto;
+            padding: 20px;
+            margin: 0;
+            background: #0b0f14;
+            border: 1px solid #30363d;
+            border-radius: 10px;
+            color: #c9d1d9;
+            font-family: "Courier New", Courier, monospace;
+            font-size: 12px;
+            line-height: 1.5;
+            text-align: left;
+            white-space: pre;
+        }
+
+        .note {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #30363d;
+            color: #8b949e;
+            font-size: 13px;
+            line-height: 1.7;
+            text-align: center;
+        }
+
+        .success {
+            display: none;
+            margin-top: 10px;
+            color: #3fb950;
+            font-size: 13px;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 20px 10px;
+            }
+
+            .card {
+                padding: 25px 15px;
+            }
+
+            h1 {
+                font-size: 25px;
+            }
+
+            .fingerprint {
+                font-size: 12px;
+            }
+
+            .pgp-key {
+                font-size: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="card">
+
+        <div class="header">
+            <div class="lock">🔐</div>
+
+            <h1>PGP Public Key</h1>
+
+            <p class="subtitle">
+                OpenPGP public key for secure communication
+            </p>
+        </div>
+
+
+        <h2>Fingerprint</h2>
+
+        <div class="fingerprint">
+            A038 D0A1 BAF8 87F3 1A3F EC42 FAEB 0AE9 11A0 EA4A
+        </div>
+
+
+        <div class="buttons">
+
+            <a class="button" href="public-key.asc" download>
+                ↓ Download Public Key
+            </a>
+
+            <button class="button secondary" onclick="copyKey()">
+                Copy Public Key
+            </button>
+
+            <div id="copied" class="success">
+                ✓ Public key copied to clipboard
+            </div>
+
+        </div>
+
+
+        <h2>Public Key</h2>
+
+        <pre id="pgpKey" class="pgp-key">-----BEGIN PGP PUBLIC KEY BLOCK-----
+
+mQENBGOkSeIBCAC5+vBF0JRxYdLCPP/sHftrz/WnCThHg3QmhAIhG4h8XgFk54jc
+7YIyXpU+lvkFH7aS1LgPVhL/72tE59Fdxar6j4e6rjrWjwuMeK0RPNrV4L3tLTzY
+H0I09S18GxAh4zUQtZ0HDQ1vtK6wxAXGdDShuEoZiSZ+YOEksF1QIQCnJmG+E5ai
+dqu8ZOjIGVmIYdmuHAix/UvUhObY9C/apU5eTCOLVf2cTU2P9zEstHEDRB//RJuM
+vrSVlo7X1izHnraJR1/fOf6jZpESKgmdHqF6QzHYy+Ujm7g5zUNHV/QQjHNCmm2b
+0gE6zMXDXxFe8M/r11Pv7D7UlwCGUNaJs4/zABEBAAG0C0tleSBQYWlyIDAxiQFU
+BBMBCAA+FiEEoDjQobr4h/MaP+xC+usK6RGg6koFAmOkSeICGwMFCQlnT94FCwkI
+BwIGFQoJCAsCBBYCAwECHgECF4AACgkQ+usK6RGg6kqn6Af/W36I8XSjh4YDFUN2
+bCZkG6anCSWjylBojIxClLxJY49SeXdbA+Srr0dp612aAv9j2YyEaOvhiKSvpEmq
+oVeTKvUoL1+/yQxHxkkgLLBnXevtu4UYctj6k6tyQ9EEZR++QVMKtqmTC1RXY0w4
+oR9gXpeoRvQ8Z9Il5I1jKYhonzQrlsIKkvpFd6yK+pJzINqMyrf7PuEBs+8Y3nrs
+6Kg3cGdbwjGdiLupzotLgqqF8QXkPlcTUYiFyMX4QVtrj05/AxKSl3ciWpd/yoes
+OV4LnLyKORFxd8bqmG2f7Z4TS0/iVG8TI1f8bj7C78dxk7WSe4CeojERmfcUeQiF
+5/RicrkBDQRjpEniAQgA4RvA+1grVPLfbN6Fjp7ehtbWCMAOIr6TAEY6au+yq/7o
+7Ze3ijePmE+XfX63O6Jv7dTy141yxtyS3a+S5uRmadO5uQ8qTrdGKp0Kgtjg3aEv
+QeqOEoCal6TgOq4QKvgaYAawf8u5GzKo+D3nvyOPdKODtpfElZVOA84DVsfjJCa3
+JCM9cSD+tOnzlIYGA44gm7Z8GNP3IRCEKclKJUERAbPT9/f8YIQ1UsXHeMAkwrc+
+r5yX8dFZmUN9dzJoVvhJGn9mn+xw0aEDJCrSElAHP7oQOWoURZDyTLqQ7gsmAZeG
+/EAWNKr9sC2YxaM77UctB+f6CuD3MqMZ3DOQ6A6YAwARAQABiQE8BBgBCAAmFiEE
+oDjQobr4h/MaP+xC+usK6RGg6koFAmOkSeICGwwFCQlnT94ACgkQ+usK6RGg6kp/
+nwf7BvmXR17LgTzpYrDBW+YSyfjLHHCZb52XAWbgg/q865FQFnqJ+isYGOlWR2Wx
+xErl8lS3WHwH3CFPfD7275xJxYfNfmBo9IiEa8Pta/5vLEGK45iyN0Ozq3kKOOv8
+OeR34qzSvLXErtXjLUjdZTPQQyYnAZ5tF4Nfdq3TMsuP5pjCDqqsmVSrDo3EN56k
+c2aZKqtDP4QffL7dVG1YK7RMtjT3YoCDQOD+ydKXrCRhVljrDO0UnMNN2BX0/bpp
+RRbb50iawk0QRnwtBwIoKrYnQGQb4UZenqD1ZVbPoPOhoYowy84fJVwYefy8Sd8+
+1cy7uCM5EOGM6AtL6P/BdOXKJg==
+=xivA
+-----END PGP PUBLIC KEY BLOCK-----</pre>
+
+
+        <div class="note">
+            Verify the fingerprint before trusting this key.
+            <br>
+            Compatible with OpenPGP, GnuPG and Kleopatra.
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+    function copyKey() {
+        const key = document.getElementById("pgpKey").textContent;
+
+        navigator.clipboard.writeText(key).then(function () {
+            const message = document.getElementById("copied");
+
+            message.style.display = "block";
+
+            setTimeout(function () {
+                message.style.display = "none";
+            }, 2500);
+        });
+    }
+</script>
+
+</body>
+</html>
+```
